@@ -1,0 +1,91 @@
+App.jsx-><Home />
+
+Home.jsx => rafc
+create json data const dummyTodos=[
+    {
+        id:1,
+        title:'todo title 1',
+        desc:'todo1 description is here'
+    },
+    {
+        id:2,
+        title:'todo title 1',
+        desc:'todo1 description is here'
+    }
+
+]
+new folder create Todos.jsx= import to home.jsx= <Todos /> Take todos attribute and pass as a value dummyTodos <Todos todos={dummyTodos}/>
+
+
+const Todos = (props) => { it receives props and print console.log(props.todos) than check console and got 2 objects. Take section tag
+create another Todo.jsx
+Todos.jsx= create {props.todos.map((todo)=><Todo todo={todo} key={todo.id}/>)}
+
+Todo.jsx= Todo receive props const Todo = (props) => { than const {title,id}=props.todo than take article tag <article> then take div. <div>  <h3>{title}</h3> <p>{desc}</p>
+than take button take icon tag <i className='fa fa-trash fa-2px'></i>
+
+create file home.module.css import style from './home.module.css' than div className={style.container} give style for  home.module.css.
+<h1 style={{color:'white'}}></h1>
+Todos.jsx=import style from './todos.module.css'   <section className={style.todos}>
+todos.module.css   <section className={style.todos}>
+
+NewTodo.jsx Take Form than take label  <input type='text' id='title' name='title' />
+ <div>
+            <label htmlFor='title'>Title:</label>
+            <input type='text' id='title' name='title' />
+        </div>
+ <div>
+            <label htmlFor='title'>Title:</label>
+            <textarea type='text' id='desc' name='desc' />
+        </div>
+
+After take button.<button type='submit'>Add Todo</button>
+take css file newTodo.module.css <form className={style.form}>  Take <div className={style['form-field']}> similarly for second.
+
+<form className={style.form} onSubmit={handleSubmit}>
+now call handleSubmit  const handleSubmit=(event)=>{ and which receives email than give event.preventDefault()
+decleare state const [todo,setTodo] = useState({title:'',desc:''})
+
+now give value as we want to update title state  <input type='text' id='title' name='title' value={todo.title} />
+for desc we give <textarea type='text' id='desc' name='desc' value={todo.desc}/>
+
+now do distructing  const {title,desc} =todo; we bring title,desc from todo.
+
+when we write something title,desc than it should hold in the state. 
+Take event handler <input type='text' id='title' name='title' value={title} onChange={handleChange}/>
+<textarea type='text' id='desc' name='desc' value={desc} onChange={handleChange}/>
+now call handleChange which receives an event const handleChange=(event)=> now we need to updated state from name.event.preventDefault();
+update setTodo by using this we can setTodo  setTodo((oldTodo)=>{ return {...oldTodo,[name]:event.target.value} we see how input handle by using state.
+ setTodo({title:'',desc:''}) we call todo by using setTodo.
+
+//passing data from child to parent component
+home.jsx= decleare state initially todos is empty.
+const [todos,setTodos]=useState([]) then send todos  <Todos todos={todos} />
+home.jsx call homeTodo  const handleAddTodo = (todo) =>{ console.log(todo);  <NewTodo onAddTodo={handleAddTodo}/>
+now receives props const Home = (props) => { go to newTodo.jsx const handleSubmit=(event)=>{  props.onAddTodo(todo);
+//get unique id for each todo
+from home.jsx import import { v4 as uuidv4 } from 'uuid'; than   setTodos((prevTodos)=>{ return [...prevTodos,{id:uuidv4(), todo}]
+go to Todos.jsx props.todos.map((todo)=><Todo todo={todo.todo} key={todo.id}/>) add {todo.todo}
+
+//Delete Todo
+button add Todo.jsx <button className={style.btn} onClick={handleClick}>
+now call handleClick  const handleClick = () =>{ alert('clicked')  <button className={style.btn} onClick={()=>{ handleClick(id) and id got from props. and pass id  const handleClick = (id) =>{ alert(id)
+Todo.jsx take state   const { title, desc } = props.todo;
+  const {id } = props;
+//passing data from parent to child components
+go to home.jsx set handleRemoveTodo   <Todos todos={todos} onRemoveTodo={handleRemoveTodo}/> now call handleRemoveTodo const handleRemoveTodo=(id)=>{ and it receives id in the perameter and give alert alert(id);
+go to Todos.jsx  props.todos.map((todo)=><Todo todo={todo.todo} key={todo.id} id={todo.id} onRemoveItem={props.onRemoveTodo}/>) go to Todo.jsx  const handleClick = (id) =>{
+    props.onRemoveTodo(id)
+go to home.jsx const handleRemoveTodo=(id)=>{ const filteredTodos = todos.filtered((todo)=>todo.id===id) setTodos(filteredTodos);
+
+const handleRemoveTodo=(id)=>{
+    //alert(id);
+   
+    setTodos((prevTodos)=>{
+        const filteredTodos = prevTodos.todos.filtered((todo)=>todo.id===id);  return filteredTodos;
+
+
+
+
+
+
